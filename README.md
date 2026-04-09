@@ -30,6 +30,7 @@ data = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.51236
  *  Фильтрация:
 
 filtered_transactions = filter_by_state(data)
+
 print(filtered_transactions)
 
  - Выход:
@@ -38,6 +39,7 @@ print(filtered_transactions)
  * Сортировка:
 
 sorted_transactions = sort_by_date(data)
+
 print(sorted_transactions)
 
  - Выход:
