@@ -38,4 +38,19 @@ print(sorted_transactions)
 
 ### Запуск тестов
 Чтобы запустить все тесты, выполните команду в корне проекта:
-```bash
+
+pytest
+
+    *выход:
+======================== test session starts ========================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: C:\Users\Admin\Desktop\project\python_project
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collected 15 items                                                   
+
+tests\test_masks.py ..                                         [ 13%]
+tests\test_processing.py .....                                 [ 46%]
+tests\test_widget.py ........                                  [100%] 
+
+======================== 15 passed in 0.06s ========================= 
