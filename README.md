@@ -55,4 +55,26 @@ print(sorted_transactions)
  - Выход:
 [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}, {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
 
+## Тестирование:
+
+В проекте используются `pytest` для проведения тестов и `mypy` для проверки типизации.
+
+### Запуск тестов
+Чтобы запустить все тесты, выполните команду в корне проекта:
+
+pytest
+
+    *выход:
+======================== test session starts ========================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+rootdir: C:\Users\Admin\Desktop\project\python_project
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collected 15 items                                                   
+
+tests\test_masks.py ..                                         [ 13%]
+tests\test_processing.py .....                                 [ 46%]
+tests\test_widget.py ........                                  [100%] 
+
+======================== 15 passed in 0.06s ========================= 
 
