@@ -65,16 +65,15 @@ print(sorted_transactions)
 pytest
 
     *выход:
-======================== test session starts ========================
-platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0
+==================== test session starts ====================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0   
 rootdir: C:\Users\Admin\Desktop\project\python_project
 configfile: pyproject.toml
 plugins: cov-7.1.0
-collected 15 items                                                   
+collected 24 items                                           
 
-tests\test_masks.py ..                                         [ 13%]
-tests\test_processing.py .....                                 [ 46%]
-tests\test_widget.py ........                                  [100%] 
+tests\test_masks.py ...........                        [ 45%] 
+tests\test_processing.py .....                         [ 66%]
+tests\test_widget.py ........                          [100%]
 
-======================== 15 passed in 0.06s ========================= 
-
+==================== 24 passed in 0.14s ===================== 
