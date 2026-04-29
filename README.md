@@ -77,3 +77,51 @@ tests\test_processing.py .....                         [ 66%]
 tests\test_widget.py ........                          [100%]
 
 ==================== 24 passed in 0.14s ===================== 
+
+## Модуль Generators
+
+Модуль `src/generators.py` предназначен для эффективной фильтрации и генерации финансовых данных. Использование генераторов позволяет обрабатывать большие объемы данных с минимальным потреблением оперативной памяти.
+
+### Основные возможности
+
+*   **Фильтрация по валюте** (`filter_by_currency`): Позволяет получить все транзакции по конкретному коду валюты (USD, RUB и т.д.).
+*   **Извлечение описаний** (`transaction_descriptions`): Генератор, возвращающий только текст описания для каждой операции.
+*   **Генератор номеров карт** (`card_number_generator`): Создает номера карт в формате `XXXX XXXX XXXX XXXX` в заданном числовом диапазоне.
+
+### Примеры использования
+```python
+from src.generators import filter_by_currency, card_number_generator
+
+# Фильтрация транзакций
+usd_transactions = filter_by_currency(transactions, "USD")
+
+# Генерация номеров карт от 1 до 5
+for card in card_number_generator(1, 5):
+    print(card)
+# Вывод: 0000 0000 0000 0001 ...
+```
+
+
+### Тестирование и качество кода
+
+В проекте настроено автоматическое тестирование:
+
+1.  **Запуск тестов**:
+    ```bash
+    pytest
+    
+2. **Выход**:
+
+==================== test session starts ====================
+platform win32 -- Python 3.14.3, pytest-9.0.3, pluggy-1.6.0   
+rootdir: C:\Users\Admin\Desktop\project\python_project
+configfile: pyproject.toml
+plugins: cov-7.1.0
+collected 31 items                                           
+
+tests\test_generators.py .......                       [ 22%] 
+tests\test_masks.py ...........                        [ 58%]
+tests\test_processing.py .....                         [ 74%] 
+tests\test_widget.py ........                          [100%]
+
+==================== 31 passed in 0.08s ===================== 
