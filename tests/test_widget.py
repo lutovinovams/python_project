@@ -29,4 +29,3 @@ def test_get_date_variants(date_raw: str, expected: str) -> None:
 def test_get_date_empty() -> None:
     """Пример теста без аргументов (если нужно проверить специфику)."""
     assert get_date("2018-07-11T02:26:18.671407") == "11.07.2018"
-    

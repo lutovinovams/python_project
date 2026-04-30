@@ -1,9 +1,9 @@
 [project]
-name = "python-project-"
+name = "python-project"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "lutovinova_mariya",email = "bukovka09@gmail.com"}
+    {name = "Your Name",email = "you@example.com"}
 ]
 requires-python = ">=3.14"
 dependencies = [
@@ -49,4 +49,3 @@ exclude = '''
 disallow_untyped_defs = true
 warn_return_any = true
 exclude = 'venv'
-
