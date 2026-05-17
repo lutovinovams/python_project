@@ -1,33 +1,50 @@
 import json
+import logging
 import os
 from typing import Any, Dict, List
+from src.logger_config import get_logger
+
+logger: logging.Logger = get_logger("utils")
+""" Инициализируем логер для модуля utils """
 
 
 def get_transactions_data(path: str) -> List[Dict[str, Any]]:
+    """ Функция открывает файл, читает его и превращает в список транзакций. """
+    logger.info(f"Запрос на чтение транзакций из файла: {path}")
+
     """ Проверка на наличие файла """
     if not os.path.exists(path):
+        logger.error(f"Файл не найден по пути: {path}")
         return []
 
     try:
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-            """ Проверка, что внутри именно список """
-            if isinstance(data, list):
-                return data
-            return []
+        """ Проверка, что внутри именно список """
+        if isinstance(data, list):
+            logger.info(
+                f"Файл успешно прочитан. Найдено транзакций: {len(data)}"
+            )
+            return data
 
-    except (json.JSONDecodeError, FileNotFoundError):
-        """ Возврат пустого списка при ошибках или пустом файле """
+        logger.error(
+            f"Некорректный формат данных в файле {path}: ожидался список, получен {type(data).__name__}"
+        )
+        return []
+
+    except json.JSONDecodeError as e:
+        logger.error(f"Ошибка декодирования JSON в файле {path}: {e}")
+        return []
+    except Exception as e:
+        logger.error(f"Непредвиденная ошибка при чтении файла {path}: {e}")
         return []
 
 
-""" Проверка """
-file_path = 'data/operations.json'
+""" Код для проверки (запуска) программы """
+if __name__ == "__main__":
+    file_path = "data/operations.json"
+    transactions = get_transactions_data(file_path)
 
-""" Функция открывает файл, читает его и превращает в список транзакций """
-transactions = get_transactions_data(file_path)
-
-""" Теперь мы можем работать с данными """
-for transaction in transactions:
-    print(transaction.get('description'))
+    for transaction in transactions:
+        print(transaction.get("description"))
