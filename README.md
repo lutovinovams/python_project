@@ -191,3 +191,46 @@ pytest
 **Через стандартный модуль unittest:**
 
 python -m unittest discover tests
+
+
+## Модуль чтения финансовых транзакций (`src/file_readers.py`)
+
+Модуль предназначен для автоматического считывания и унификации финансовых операций из файлов различных форматов (CSV и Excel). Он автоматически обрабатывает пустые значения, заменяя их на `None` (аналог `null` в JSON), что обеспечивает единую структуру данных в рамках проекта.
+
+### Требования и зависимости
+Для работы модуля и чтения Excel-файлов требуются библиотеки `pandas` и `openpyxl`. Все зависимости зафиксированы в файле `requirements.txt`.
+
+Установка зависимостей:
+
+pip install -r requirements.txt
+
+
+### Инструкция по использованию
+
+1. Поместите ваши файлы с данными (например, `transactions.csv` и `transactions_excel.xlsx`) в папку `data/` в корне проекта.
+2. Импортируйте функцию `get_financial_transactions` в вашу точку входа (`main.py`):
+
+
+from src.file_readers import get_financial_transactions
+
+# Чтение данных из CSV
+csv_data = get_financial_transactions("data/transactions.csv")
+print(f"Загружено транзакций из CSV: {len(csv_data)}")
+
+# Чтение данных из Excel
+excel_data = get_financial_transactions("data/transactions_excel.xlsx")
+print(f"Загружено транзакций из Excel: {len(excel_data)}")
+
+
+## Тестирование и качество кода
+
+### Запуск тестов
+Тесты изолированы от файловой системы с помощью механизмов `unittest.mock` (`Mock` и `patch`). Для запуска тестов выполните команду:
+
+pytest
+
+
+### Анализ покрытия кода тестами (Coverage)
+Функциональный код модуля полностью покрыт тестами на 100% (включая обработку пустых файлов, неверных расширений и ошибок парсинга). Проверить покрытие можно командой:
+
+pytest --cov=src
